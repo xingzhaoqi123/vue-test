@@ -10,10 +10,25 @@ let msg = [
     password: "234"
   }
 ];
+
+router.get("/getJsonp", (req, res) => {
+  res.jsonp({
+    data: "一些信息",
+    msg: "行兆奇",
+    code: "200"
+  });
+});
+router.get("/getMsg", (req, res) => {
+  res.json({
+    data: "一些信息222",
+    msg: "行兆奇222",
+    code: 200
+  });
+});
+
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  res.render("index", { title: "Express" });
-  next();
+  res.render("index", { title: "xzq" });
 });
 router.post("/login", function(req, res) {
   const { username, password } = req.body;
@@ -27,10 +42,7 @@ router.post("/login", function(req, res) {
         code: 200,
         msg: "登陆成功"
       });
-      
     }
-   
   });
-  return  res.end();
 });
 module.exports = router;
